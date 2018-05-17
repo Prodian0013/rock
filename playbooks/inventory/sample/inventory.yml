@@ -7,6 +7,7 @@
 
 all:
   vars:
+    offline: true # Use when not connected to the internet.  This assumes you have ran rock-deployer on the controller.
     bpf_filter: "" # Use this to screen traffic from the Moloch PCAP capture. Format is <IP_ADDRESS>/<CIDR>
     pcap_bpf_filter: "" # Packets that match this filter will NOT be saved to disk by Moloch
     dns_ip: # <192.168.1.50> The IP address of the system DNS server. You may define this or it will default to using master server. We suggest you leave it to default unless you know what you are doing

@@ -1,0 +1,99 @@
+%YAML 1.1
+---
+
+offline_repo_base: "http://{{ ansible_env[\"SSH_CLIENT\"].split()[0] }}/offlinerepo"
+
+rhel_repos:
+  - rhel-7-server-rpms
+  - rhel-7-server-extras-rpms
+  #- rhel-7-server-optional-rpms
+
+rhel_offline_repos:
+  rhel-7-server-rpms:
+    baseurl: "{{ offline_repo_base }}/rhel-7-server-rpms"
+    gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+    gpgcheck: true
+    name: "rhel-7-server-rpms"
+  rhel-7-server-extras-rpms:
+    baseurl: "{{ offline_repo_base }}/rhel-7-server-extras-rpms"
+    gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+    gpgcheck: true
+    name: "rhel-7-server-extras-rpms"
+  # rhel-7-server-optional-rpms:
+  #   baseurl: "{{ offline_repo_base }}/rhel-7-server-optional-rpms"
+  #   gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release"
+  #   gpgcheck: true
+  #   name: "rhel-7-server-optional-rpms"
+
+additional_offline_repos:
+  epel:
+    baseurl: "{{ offline_repo_base }}/epel"
+    gpgkey:  "http://{{ offline_repo_base }}/epel/RPM-GPG-KEY-EPEL-7"
+    gpgcheck: true
+    name: "epel"
+  rocknsm:
+    baseurl: "{{ offline_repo_base }}/rocknsm"
+    gpgkey:  ""
+    gpgcheck: false
+    name: "rocknsm"
+  kube:
+    baseurl: "{{ offline_repo_base }}/kubernetes"
+    gpgkey:  "http://{{ offline_repo_base }}/kubernetes/yum-key.gpg"
+    gpgcheck: true
+    name: "kubernetes"
+  misc:
+    baseurl: "{{ offline_repo_base }}/misc"
+    gpgkey:  ""
+    gpgcheck: false
+    name: "misc"
+  ceph:
+    baseurl: "{{ offline_repo_base }}/ceph"
+    gpgkey:  ""
+    gpgcheck: false
+    name: "ceph"
+
+centos_offline_repos:
+  base:
+    baseurl: "{{ offline_repo_base }}/base"
+    gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    gpgcheck: true
+    name: "base"
+  updates:
+    baseurl: "{{ offline_repo_base }}/updates"
+    gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    gpgcheck: true
+    name: "updates"
+  extras:
+    baseurl: "{{ offline_repo_base }}/extras"
+    gpgkey:  "file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+    gpgcheck: true
+    name: "extras"
+
+additional_online_repos:
+  epel:
+    baseurl: "{{ offline_repo_base }}/epel"
+    gpgkey:  "http://{{ offline_repo_base }}/epel/RPM-GPG-KEY-EPEL-7"
+    gpgcheck: true
+    name: "epel"
+  rocknsm:
+    baseurl: "https://copr-be.cloud.fedoraproject.org/results/@rocknsm/rocknsm-2.1/epel-7-$basearch/"
+    gpgkey:  "https://copr-be.cloud.fedoraproject.org/results/@rocknsm/rocknsm-2.1/pubkey.gpg"
+    gpgcheck: true
+    name: "rocknsm"
+  kube:
+    baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+    gpgkey:  "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+    gpgcheck: true
+    name: "kubernetes"
+  ceph_base:
+    baseurl: "https://download.ceph.com/rpm-luminous/el7/$basearch"
+    gpgkey:  "https://download.ceph.com/keys/release.asc"
+    gpgcheck: true
+    name: "ceph-rhel"
+  ceph_noarch:
+    baseurl: "https://download.ceph.com/rpm-luminous/el7/noarch"
+    gpgkey:  "https://download.ceph.com/keys/release.asc"
+    gpgcheck: true
+    name: "ceph-rhel"
+
+...
