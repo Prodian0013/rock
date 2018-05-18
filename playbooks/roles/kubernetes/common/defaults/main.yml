@@ -8,3 +8,15 @@
 kube_baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
 kube_gpgurl: "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
 kube_reload: false
+
+kube_online:
+  baseurl: "https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64"
+  gpgkey:  "https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg"
+  gpgcheck: true
+  name: "kubernetes"
+
+kube_offline:
+  baseurl: "{{ offline_repo_base }}/kubernetes"
+  gpgkey:  "http://{{ offline_repo_base }}/kubernetes/yum-key.gpg"
+  gpgcheck: true
+  name: "kubernetes"

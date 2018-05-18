@@ -57,4 +57,6 @@ package_list:
 #rocknsm_gpgurl: https://packagecloud.io/rocknsm/2/gpgkey
 rocknsm_baseurl: 'https://copr-be.cloud.fedoraproject.org/results/@rocknsm/rocknsm-2.1/epel-7-$basearch/'
 rocknsm_gpgurl: 'https://copr-be.cloud.fedoraproject.org/results/@rocknsm/rocknsm-2.1/pubkey.gpg'
+
+offline_repo_base: "http://{{ ansible_env[\"SSH_CLIENT\"].split()[0] }}/offlinerepo"
 ...

@@ -1,5 +1,7 @@
 ---
 
+# NOTE: K8S and CEPH REPOS ARE MAINTAINED IN THEIR RESPECTIVE ROLES
+
 - import_tasks: offline.yml
   when: offline is defined and offline
 
